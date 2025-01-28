@@ -1,0 +1,51 @@
+.landingheader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  padding: 25px;
+
+  .links {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+
+    .logo {
+      align-self: center;
+      color: #2a5fff99;
+    }
+
+    .links__pages {
+      nav {
+        ul {
+          display: flex;
+          gap: 2rem;
+          list-style-type: none;
+          margin: 0;
+          padding: 0;
+          align-items: center;
+          color: #2a5fff99;
+        }
+      }
+    }
+  }
+
+  .auth__btns {
+    align-self: center;
+    display: flex;
+    gap: 30px;
+    #signin {
+      background-color: transparent;
+      border: none;
+    }
+    #getstarted {
+      background-color: #2a5fff99;
+      border: none;
+      color: white;
+      border-radius: 20px;
+      padding: 10px;
+    }
+  }
+}

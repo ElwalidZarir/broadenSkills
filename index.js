@@ -1,17 +1,21 @@
-document
-  .getElementById("btn")
-  .addEventListener("click", debounce(handler, 5000));
-
-function handler() {
-  console.log("clicked");
-}
-
-function debounce(fn, delay) {
-  let timeout;
-  return (...args) => {
+function debounce(callback, delay) {
+  let timeout = null;
+  return function (...args) {
     if (timeout) {
-      clearTimeout(timeout);
+       clearTimeout(timeout);
+    }else {
+      callback()
     }
-    timeout = setTimeout(() => fn(...args), delay);
+    timeout = setTimeout(() => {
+      callback(...args);
+    }, delay);
   };
 }
+
+const debouncedFn = debounce(() => {
+  console.log("clicked button");
+}, 2000);
+
+const btn = document.querySelector("button");
+
+btn.addEventListener("click", debouncedFn);
