@@ -1,10 +1,10 @@
-function debounce(callback, delay) {
+/* function debounce(callback, delay) {
   let timeout = null;
   return function (...args) {
     if (timeout) {
-       clearTimeout(timeout);
-    }else {
-      callback()
+      clearTimeout(timeout);
+    } else {
+      callback();
     }
     timeout = setTimeout(() => {
       callback(...args);
@@ -19,3 +19,12 @@ const debouncedFn = debounce(() => {
 const btn = document.querySelector("button");
 
 btn.addEventListener("click", debouncedFn);
+ */
+
+function here(){
+
+}
+
+function comme(here){
+  
+}

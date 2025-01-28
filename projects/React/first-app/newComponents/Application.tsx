@@ -17,32 +17,49 @@ const Application = () => {
     <div className="application">
       <Formik
         initialValues={initialValues}
+        validate={(values) => {
+          const errors:{ name?:string, password?: string } ={}
+          if (!values.name) {
+            errors.name = "Required";
+          } else if (!/^[A-Za-z\s]{2,50}$/.test(values.name)) {
+            errors.name = "Invalid name";
+          }
+          return errors
+        }}
         onSubmit={(values) => {
-          fetch("http://localhost:8000/applications",{
-            method:"POST",
+          fetch("http://localhost:8000/applications", {
+            method: "POST",
             headers: {
-                "Content-Type" :"application/json"
+              "Content-Type": "application/json",
             },
-            body:JSON.stringify(values)
-          })
+            body: JSON.stringify(values),
+          });
         }}
       >
-        {({ values, handleChange, handleSubmit }) => (
+        {({ values, handleChange, handleSubmit, errors, touched, handleBlur }) => (
           <Form onSubmit={handleSubmit}>
-            <Field
-              value={values.name}
-              placeholder="name"
-              name="name"
-              onChange={handleChange}
-            />
-            <Field
-              type="password"
-              value={values.password}
-              placeholder="password"
-              name="password"
-              onChange={handleChange}
-            />
-            <button type="submit">Submit</button>
+            <div className="input">
+              <Field
+                value={values.name}
+                placeholder="name"
+                name="name"
+                onChange={handleChange}
+                onBlur={handleBlur}
+              />
+              {errors.name && touched.name && errors.name}
+            </div>
+            <div className="input">
+              <Field
+                type="password"
+                value={values.password}
+                placeholder="password"
+                name="password"
+                onChange={handleChange}
+              />
+            </div>
+            <div className="btn">
+              <button type="submit">Submit</button>
+            </div>
           </Form>
         )}
       </Formik>

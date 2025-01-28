@@ -1,6 +1,33 @@
-.application{
-    display: flex;
-    justify-content: center;
-    height:100vh;
-    align-items: center;
+@keyframes begin {
+  from {
+    transform: translateX(500px);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.application {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 90%;
+  max-width: 600px;
+  height: auto;
+  max-height: 90vh;
+  padding: 2rem;
+  background-color: rgb(214, 214, 236);  
+  border-radius: 16px;
+
+  .input{
+    padding:1rem
+  }
+
+  .btn {
+    justify-self: center;
+
+  }
+
+  animation-name: begin;
+  animation-duration: 1s;
 }
