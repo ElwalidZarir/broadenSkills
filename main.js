@@ -1,5 +1,11 @@
-var a = 5;
-var fname = "walid";
-var lname = "zarir";
-var fullname = fname + "" + lname;
-console.log(fullname);
+function debounce(callback, delay) {
+  let flag;
+  return (...args) => {
+    clearInterval(flag);
+    flag = setTimeout(() => {
+      callback(...args);
+    }, delay);
+  };
+}
+
+

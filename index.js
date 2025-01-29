@@ -20,11 +20,23 @@ const btn = document.querySelector("button");
 
 btn.addEventListener("click", debouncedFn);
  */
+//debouncing text
+const typed = document.getElementById("default");
+const debounced = document.getElementById("debounce");
+const input = document.querySelector("input");
 
-function here(){
-
+function debounce(callback, delay) {
+  let timeout = null;
+  return (...args) => {
+    clearTimeout(timeout)
+    timeout = setTimeout(() => {
+      callback(...args);
+    }, delay);
+  };
 }
 
-function comme(here){
-  
-}
+const debouncing = debounce((text) => {
+  debounced.textContent = text;
+}, 3000);
+
+input.addEventListener("input", (e) => debouncing(e.target.value));
